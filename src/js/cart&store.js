@@ -16,7 +16,7 @@ const createCoffeeCard = (coffee) => {
                 <p class="text-sm font-medium text-gray-900">$${coffee.price}</p>
             </div>
                 <div class="flex justify-center mt-6">
-                <button onclick="addToCart(${coffee.id})" class="rounded-md bg-light-brown px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                <button onclick="addToCart(${coffee.id})" class="float rounded-md bg-light-brown px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                     Add to cart
                 </button>
         </div>`;
