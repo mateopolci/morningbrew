@@ -151,6 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     event.preventDefault();
                     sortCoffees("asc");
                     updateGrid();
+                    sortDiv.classList.toggle("hidden");
                 });
             }
             if (descSort) {
@@ -158,6 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     event.preventDefault();
                     sortCoffees("desc");
                     updateGrid();
+                    sortDiv.classList.toggle("hidden");
                 });
             }
         }

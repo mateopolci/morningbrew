@@ -8,7 +8,8 @@ const sweetAddDelay = () => {
             Swal.fire({
                 title: "Item added!",
                 icon: "success",
-                confirmButtonText: "Great!",
+                timer: 800,
+                showConfirmButton: false
             });
         });
     }
