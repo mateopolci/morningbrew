@@ -26,15 +26,15 @@ const addToCart = (coffeeId) => {
     const selectedCoffee = coffeeList.find((coffee) => coffee.id === coffeeId);
     if (selectedCoffee) {
         cart.push(selectedCoffee);
-        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem("cart", JSON.stringify(cart));
     }
 };
 // Update cart list
 const updateCartList = () => {
-    const cartList = document.getElementById('cartList');
+    const cartList = document.getElementById("cartList");
     if (cartList) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cartList.innerHTML = '';
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cartList.innerHTML = "";
         cart.forEach((coffee) => {
             cartList.innerHTML += `
                 <li class="flex py-6">
@@ -63,29 +63,29 @@ const updateCartList = () => {
 };
 // Update cart total
 const updateTotal = () => {
-    const total = document.getElementById('total');
+    const total = document.getElementById("total");
     if (total) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
         const totalAmount = cart.reduce((sum, coffee) => sum + coffee.price, 0);
         total.textContent = `$${totalAmount.toFixed(2)}`;
     }
 };
 // Remove a cart item
 const removeFromCart = (coffeeId) => {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const index = cart.findIndex((coffee) => coffee.id === coffeeId);
     if (index !== -1) {
         cart.splice(index, 1);
-        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem("cart", JSON.stringify(cart));
         updateCartList();
         updateTotal();
     }
 };
 // Update grid with coffe cards
 const updateGrid = () => {
-    const itemGrid = document.getElementById('itemGrid');
+    const itemGrid = document.getElementById("itemGrid");
     if (itemGrid) {
-        itemGrid.innerHTML = '';
+        itemGrid.innerHTML = "";
         coffeeList.forEach((coffee) => {
             itemGrid.innerHTML += createCoffeeCard(coffee);
         });
@@ -94,10 +94,9 @@ const updateGrid = () => {
 // Coffee sorting
 const sortCoffees = (order) => {
     coffeeList.sort((a, b) => {
-        if (order === 'asc') {
+        if (order === "asc") {
             return a.price - b.price;
-        }
-        else if (order === 'desc') {
+        } else if (order === "desc") {
             return b.price - a.price;
         }
         return 0;
@@ -105,28 +104,30 @@ const sortCoffees = (order) => {
 };
 // Origin filter
 const filterByOrigin = (selectedOrigin) => {
-    const filteredCoffees = coffeeList.filter((coffee) => coffee.origin === selectedOrigin);
-    const itemGrid = document.getElementById('itemGrid');
+    const filteredCoffees = coffeeList.filter(
+        (coffee) => coffee.origin === selectedOrigin
+    );
+    const itemGrid = document.getElementById("itemGrid");
     if (itemGrid) {
         itemGrid.innerHTML = filteredCoffees
             .map((coffee) => createCoffeeCard(coffee))
-            .join('');
+            .join("");
     }
 };
 const handleFilterChange = (event) => {
-    if (event.target.name === 'origin[]') {
+    if (event.target.name === "origin[]") {
         const selectedOrigin = event.target.value;
         filterByOrigin(selectedOrigin);
-    }   
+    }
 };
 document.querySelectorAll('input[name="origin[]"]').forEach((input) => {
-    input.addEventListener('change', handleFilterChange);
+    input.addEventListener("change", handleFilterChange);
 });
 // Event init and DOM load
-document.addEventListener('DOMContentLoaded', () => {
-    const cartList = document.getElementById('cartList');
-    const total = document.getElementById('total');
-    const itemGrid = document.getElementById('itemGrid');
+document.addEventListener("DOMContentLoaded", () => {
+    const cartList = document.getElementById("cartList");
+    const total = document.getElementById("total");
+    const itemGrid = document.getElementById("itemGrid");
     // Cart page
     if (cartList && total) {
         updateCartList();
@@ -136,26 +137,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (itemGrid) {
         updateGrid();
         // Show sort button
-        const sortButton = document.getElementById('sortButton');
-        const sortDiv = document.querySelector('.sortDiv');
+        const sortButton = document.getElementById("sortButton");
+        const sortDiv = document.querySelector(".sortDiv");
         if (sortButton && sortDiv) {
-            sortButton.addEventListener('click', (event) => {
+            sortButton.addEventListener("click", (event) => {
                 event.preventDefault();
-                sortDiv.classList.toggle('hidden');
+                sortDiv.classList.toggle("hidden");
             });
-            const ascSort = document.getElementById('ascSort');
-            const descSort = document.getElementById('descSort');
+            const ascSort = document.getElementById("ascSort");
+            const descSort = document.getElementById("descSort");
             if (ascSort) {
-                ascSort.addEventListener('click', (event) => {
+                ascSort.addEventListener("click", (event) => {
                     event.preventDefault();
-                    sortCoffees('asc');
+                    sortCoffees("asc");
                     updateGrid();
                 });
             }
             if (descSort) {
-                descSort.addEventListener('click', (event) => {
+                descSort.addEventListener("click", (event) => {
                     event.preventDefault();
-                    sortCoffees('desc');
+                    sortCoffees("desc");
                     updateGrid();
                 });
             }
