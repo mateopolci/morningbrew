@@ -12,3 +12,6 @@ body {
     -webkit-transform: translate(0px,5px);
     -moz-transform:translate(0px,5px);
 }
+.swal2-confirm {
+    background-color: #DDA15E !important; /* Cambia esto por el color que desees */
+}
