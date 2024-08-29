@@ -13,4 +13,3 @@ const fetchPhrase = async () => {
     }
 };
 fetchPhrase();
-//.loader
